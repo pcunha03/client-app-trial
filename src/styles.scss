@@ -1,1 +1,45 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'styles/_config.scss';
+
+/* Html & Body */
+html,
+body {
+  height: 100%;
+  background-color: $black;
+}
+body {
+  color: $white;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* Footer */
+footer {
+  background-color: $black;
+  border-top: 1px solid $gray;
+}
+
+/* Navbar */
+nav {
+  &.navbar {
+    border-bottom: 1px solid $gray;
+  }
+}
+
+/* Content */
+.card {
+  color: $black;
+  & .card-text {
+    font-size: $font-size-small;
+    min-height: 36px;
+    & p {
+      margin-bottom: 5px;
+    }
+  }
+  & .card-author {
+    font-size: $font-size-small;
+    font-weight: 500;
+  }
+}
+.text-sm {
+  font-size: $font-size-small;
+}

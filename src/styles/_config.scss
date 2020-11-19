@@ -1,0 +1,22 @@
+// Import Font
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700&subset=latin-ext);
+
+// Colors
+$gray: #7b8b94;
+$blue: #1f8ceb;
+$blue-dark: #0162b6;
+$black: #333333;
+$white: #ffffff;
+
+// Fonts
+$font-family-sans-serif: 'Roboto', sans-serif;
+$text-color: $gray;
+$body-color: $gray;
+$font-size-base: 0.875rem;
+$font-size-large: 1rem;
+$font-size-small: 0.75rem;
+
+// Links
+$link-color: $blue;
+$link-hover-color: $blue-dark;
+$link-active-color: $blue-dark;

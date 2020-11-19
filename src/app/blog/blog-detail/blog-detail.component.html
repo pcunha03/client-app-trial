@@ -1,0 +1,22 @@
+<div *ngIf="!postLoading">
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text" [innerHTML]="post.content"></p>
+          <p class="card-author">By: {{post.author}} / Posted in: {{post.publish_date | date:'mediumDate' }}</p>
+          <hr>
+          <h4>Comments</h4>
+          <app-blog-detail-comments
+            [postId]="post.id"></app-blog-detail-comments>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row my-5">
+    <div class="col-12">
+      <a [routerLink]="['/blog']" class="btn btn-primary">Return</a>
+    </div>
+  </div>
+</div>
