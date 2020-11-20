@@ -2,6 +2,7 @@
   <div class="card-body">
     <h5 class="card-title">{{postTitle}}</h5>
     <p class="card-text">{{postDescription}}</p>
+    <p class="card-author">By: {{postAuthor}} / Posted in: {{postPublishDate | date:'mediumDate' }}</p>
     <a [routerLink]="postId" class="btn btn-primary">Read more</a>
   </div>
 </div>

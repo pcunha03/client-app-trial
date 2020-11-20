@@ -3,10 +3,57 @@
     <p>There aren't any comments for this post. You can be the First!</p>
   </div>
   <div *ngFor="let comment of comments"
-    [ngClass]="{'comment-lvl1': !comment.parent_id}">
+    [ngClass]="{'pl-3': comment.parent_id}">
     <p class="text-sm">{{comment.content}}</p>
     <p class="text-sm">{{comment.user}} in {{comment.date | date }}</p>
     <hr>
   </div>
-  <button (click)="onComment(post.id)" class="btn btn-primary">Comment</button>
+  <button (click)="toggleAddComment = !toggleAddComment" class="btn btn-primary"
+    *ngIf="!toggleAddComment">Comment</button>
+  <div *ngIf="toggleAddComment">
+    <form (ngSubmit)="addCommentForm.form.valid && onAddComment(addCommentForm)" #addCommentForm="ngForm" novalidate>
+      <div class="row">
+        <div class="form-group col-12"
+             [ngClass]="{'form-group-invalid': (addCommentForm.submitted || user.touched) && user.invalid}">
+          <label class="form-control-label p-l-0" for="user">Name <span class="text-danger">*</span></label>
+          <input
+            type="text"
+            name="user"
+            id="user"
+            class="form-control"
+            placeholder="What's your name/username?"
+            required
+            #user="ngModel"
+            [(ngModel)]="newComment.user">
+          <div *ngIf="(addCommentForm.submitted || addCommentForm.touched) && addCommentForm.invalid" class="text-danger">
+            <small *ngIf="user.errors">This field is required</small>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-12"
+             [ngClass]="{'form-group-invalid': (addCommentForm.submitted || content.touched) && content.invalid}">
+          <label class="form-control-label p-l-0" for="content">Comment <span class="text-danger">*</span></label>
+          <textarea
+            name="content"
+            id="content"
+            class="form-control"
+            placeholder="What's on your mind?"
+            required
+            #content="ngModel"
+            [(ngModel)]="newComment.content"></textarea>
+          <div *ngIf="(addCommentForm.submitted || addCommentForm.touched) && addCommentForm.invalid" class="text-danger">
+            <small *ngIf="content.errors">This field is required</small>
+          </div>
+        </div>
+      </div>
+      <button
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="saving">
+        Save Comment
+      </button>
+    </form>
+  </div>
+
 </section>
